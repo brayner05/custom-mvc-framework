@@ -3,6 +3,7 @@
 namespace Core;
 
 use RuntimeException;
+use Smarty\Smarty;
 
 class Router {
     private static array $get_handlers = [];

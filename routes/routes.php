@@ -10,7 +10,10 @@ Router::get('/', function () {
 });
 
 Router::get('/foo', function (Request $request) {
-    return "Query: " . json_encode($request->query);
+    return view('foo', [
+        'message' => 'Hello',
+        'recipient' => 'World'
+    ]);
 });
 
 Router::post('/foo', function (Request $request) {
