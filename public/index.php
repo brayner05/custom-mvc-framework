@@ -11,7 +11,8 @@ use Smarty\Smarty;
 $smarty = new Smarty();
 $smarty->setTemplateDir(__DIR__ . '/../app/Views');
 $smarty->setConfigDir(__DIR__ . '/../config');
-$smarty->setCacheDir(__DIR__ . '/../build/cache');
+$smarty->setCompileDir(__DIR__ . '/../tmp/build/');
+$smarty->setCacheDir(__DIR__ . '/../tmp/build/cache');
 
 // Capture request information.
 $method = $_SERVER['REQUEST_METHOD'];
