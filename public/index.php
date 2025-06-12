@@ -7,7 +7,7 @@ use Core\Request;
 
 $method = $_SERVER['REQUEST_METHOD'];
 $uri = $_SERVER['REQUEST_URI'];
-$path = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_METHOD]";
+$path = parse_url($uri, PHP_URL_PATH) ?? '/';
 $query = $_GET;
 $body = file_get_contents('php://input');
 
