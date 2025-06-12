@@ -1,10 +1,12 @@
 <?php
 
+require __DIR__ . '/../core/response_util.php';
+
 use Core\Request;
 use Core\Router;
 
 Router::get('/', function () {
-    return "Hello, World!";
+    return view('home');
 });
 
 Router::get('/foo', function (Request $request) {
@@ -12,6 +14,5 @@ Router::get('/foo', function (Request $request) {
 });
 
 Router::post('/foo', function (Request $request) {
-    header('Content-Type: text/json');
-    return $request->body;
+    return json($request->body);
 });
