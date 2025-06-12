@@ -1,0 +1,22 @@
+{
+    "name": "brayner05/mvc-framework",
+    "type": "project",
+    "scripts": {
+        "dev": "php -S localhost:8000 -t public"
+    },
+    "autoload": {
+        "psr-4": {
+            "Controllers\\": "app/Controllers/",
+            "Models\\": "app/Models/",
+            "Views\\": "app/Views/",
+            "Core\\": "core/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Brayden Rayner",
+            "email": "braydenrayner@outlook.com"
+        }
+    ],
+    "require": {}
+}
