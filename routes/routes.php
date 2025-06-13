@@ -12,7 +12,7 @@ Router::get('/', function () {
 Router::get('/foo', function (Request $request) {
     return view('foo', [
         'message' => 'Hello',
-        'recipient' => 'World'
+        'recipient' => $request->query['name'] ?? 'World'
     ]);
 });
 

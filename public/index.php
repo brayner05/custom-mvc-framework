@@ -2,9 +2,14 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../routes/routes.php';
 
+use Core\ControllerLoader;
+use Core\DependencyContainer;
 use Core\Router;
 use Core\Request;
 use Core\View;
+use Doctrine\DBAL\DriverManager;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\ORMSetup;
 use Smarty\Smarty;
 
 // Initialize Smarty (View Engine).
@@ -14,7 +19,7 @@ $smarty->setConfigDir(__DIR__ . '/../config');
 $smarty->setCompileDir(__DIR__ . '/../tmp/build/');
 $smarty->setCacheDir(__DIR__ . '/../tmp/build/cache');
 
-// Capture request information.
+
 $method = $_SERVER['REQUEST_METHOD'];
 $uri = $_SERVER['REQUEST_URI'];
 $path = parse_url($uri, PHP_URL_PATH) ?? '/';

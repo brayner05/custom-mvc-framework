@@ -14,29 +14,30 @@ class Router {
     /**
      * Register a GET handler for a specific route/path.
      */
-    public static function get(string $path, callable $callback) {
-        Router::add_route_handler($path, 'GET', $callback);
+    public static function get(string $path, callable|array $handler) {
+        Router::add_route_handler($path, 'GET', $handler);
     }
+
 
     /**
      * Register a POST handler for a specific route/path.
      */
-    public static function post($path, callable $callback) {
-        Router::add_route_handler($path, 'POST', $callback);
+    public static function post($path, callable $handler) {
+        Router::add_route_handler($path, 'POST', $handler);
     }
 
     /**
      * Register a PUT handler for a specific route/path.
      */
-    public static function put($path, callable $callback) {
-        Router::add_route_handler($path, 'PUT', $callback);
+    public static function put($path, callable $handler) {
+        Router::add_route_handler($path, 'PUT', $handler);
     }
 
     /**
      * Register a DELETE handler for a specific route/path.
      */
-    public static function delete($path, callable $callback) {
-        Router::add_route_handler($path, 'DELETE', $callback);
+    public static function delete($path, callable $handler) {
+        Router::add_route_handler($path, 'DELETE', $handler);
     }
 
     /**
@@ -86,20 +87,20 @@ class Router {
 
         switch ($method) {
             case 'GET':
-                $callback = Router::$get_handlers[$path];
-                return $callback($request);
+                $handler = Router::$get_handlers[$path];
+                return $handler($request);
 
             case 'POST':
-                $callback = Router::$post_handlers[$path];
-                return $callback($request);
+                $handler = Router::$post_handlers[$path];
+                return $handler($request);
 
             case 'PUT':
-                $callback = Router::$put_handlers[$path];
-                return $callback($request);
+                $handler = Router::$put_handlers[$path];
+                return $handler($request);
 
             case 'DELETE':
-                $callback = Router::$delete_handlers[$path];
-                return $callback($request);
+                $handler = Router::$delete_handlers[$path];
+                return $handler($request);
 
             default:
                 throw new \RuntimeException("Undefined method $method");
